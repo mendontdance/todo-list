@@ -10,6 +10,7 @@
     "@types/node": "^16.18.48",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "bem-cn": "^3.0.1",
     "mobx": "^6.10.2",
     "mobx-react-lite": "^4.0.4",
     "react": "^18.2.0",
