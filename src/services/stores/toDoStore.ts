@@ -7,19 +7,18 @@ export class ToDoStore {
         makeAutoObservable(this)
     }
 
-    data:TInfo[] = []
+    data: Map<number, TInfo> = new Map()
 
-    addTask = (action:TInfo) => {
-        return this.data = [...this.data, action]
+    addTask = (data:TInfo) => {
+        this.data.set(data.id, data)
     }
 
-    deleteTask = (action:number) => {
-        return this.data = this.data.filter(elem => elem.id !== action)
+    deleteTask = (id:number) => {
+        this.data.delete(id)
     }
 
-    updateTask = (action:TInfo) => {
-        let findIndex = this.data.findIndex(elem => elem.id === action.id)
-        return [...this.data, this.data[findIndex].value = action.value]
+    updateTask = (data:TInfo) => {
+        this.data.set(data.id, data)
     }
 }
 
