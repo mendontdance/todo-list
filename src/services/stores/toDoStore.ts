@@ -1,23 +1,33 @@
-import { makeAutoObservable } from 'mobx'
+import { action, makeObservable, observable } from 'mobx'
 import { TInfo } from '../types/types';
 export const baseUrl = 'https://norma.nomoreparties.space/api';
 
 export class ToDoStore {
+
+    // constructor() {
+    //     makeObservable(this, {
+    //         data: observable,
+    //         addTask: action,
+    //         deleteTask: action,
+    //         updateTask: action,
+    //     })
+    // }
+
     constructor() {
-        makeAutoObservable(this)
+        makeObservable(this)
     }
 
-    data: Map<number, TInfo> = new Map()
+    @observable data: Map<number, TInfo> = new Map()
 
-    addTask = (data:TInfo) => {
+    @action addTask = (data: TInfo) => {
         this.data.set(data.id, data)
     }
 
-    deleteTask = (id:number) => {
+    @action deleteTask = (id: number) => {
         this.data.delete(id)
     }
 
-    updateTask = (data:TInfo) => {
+    @action updateTask = (data: TInfo) => {
         this.data.set(data.id, data)
     }
 }

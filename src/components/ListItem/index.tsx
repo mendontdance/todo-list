@@ -22,15 +22,19 @@ class ListItem extends React.Component {
     context!: React.ContextType<typeof RootStoreContext>;
 
     constructor({ id, value }: { id: number, value: string }) {
-        super({ id, value });
+        super({ id, value });   
         this.state = {
-            isEdit: false,
+            ...this.state,
             value: value,
             id: id
         }
     }
 
-    state;
+    state = {
+        isEdit: false,
+        value: '',
+        id: 0
+    };
 
     handleClickDelete = (): void => {
         const store = this.context?.toDoStore;
