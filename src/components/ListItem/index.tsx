@@ -6,39 +6,33 @@ import block from 'bem-cn';
 
 const selector = block('task-item');
 
-// type TProps = {
-//     id: number,
-//     value: string
-// }
+interface IListItemProps {
+    id: number;
+    value: string;
+}
 
-// type TState = {
-//     id: number,
-//     value: string,
-//     isEdit: boolean
-// }
+interface IListItemState {
+    id: number,
+    value: string,
+    isEdit: boolean
+}
 
-class ListItem extends React.Component {
+class ListItem extends React.Component<IListItemProps, IListItemState> {
     static contextType = RootStoreContext;
     context!: React.ContextType<typeof RootStoreContext>;
 
     constructor({ id, value }: { id: number, value: string }) {
-        super({ id, value });   
+        super({ id, value });
         this.state = {
-            ...this.state,
+            isEdit: false,
             value: value,
             id: id
         }
     }
 
-    state = {
-        isEdit: false,
-        value: '',
-        id: 0
-    };
-
     handleClickDelete = (): void => {
-        const store = this.context?.toDoStore;
-        store?.deleteTask(this.state.id)
+        const store = this.context.toDoStore;
+        store.deleteTask(this.state.id)
     }
 
     handleClickEdit = () => {
@@ -70,9 +64,6 @@ class ListItem extends React.Component {
     }
 
     render() {
-        if (!this.context) {
-            return null;
-        }
         const store = this.context?.toDoStore;
         console.log(Array.from(store.data.values()));
         return (

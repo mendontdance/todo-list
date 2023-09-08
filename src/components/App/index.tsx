@@ -32,9 +32,6 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.context) {
-      return null;
-    }
     const { data } = this.context.toDoStore;
 
     return (

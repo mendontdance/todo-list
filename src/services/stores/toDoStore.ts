@@ -1,18 +1,7 @@
 import { action, makeObservable, observable } from 'mobx'
 import { TInfo } from '../types/types';
-export const baseUrl = 'https://norma.nomoreparties.space/api';
 
 export class ToDoStore {
-
-    // constructor() {
-    //     makeObservable(this, {
-    //         data: observable,
-    //         addTask: action,
-    //         deleteTask: action,
-    //         updateTask: action,
-    //     })
-    // }
-
     constructor() {
         makeObservable(this)
     }
